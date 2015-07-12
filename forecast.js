@@ -1,14 +1,13 @@
 
-function printError(error, msg) {
+function printError(error) {
 	msg = msg || "";
-	console.log(error.message + ". " + msg);
+	console.log(error.message);
 }
 
-(function() {
+function forecast(zipcode) {
 	var https = require("https");
 	var googleApiKey = "AIzaSyCnUPwiA1UP0Fkpyhxx35R98SFBLttjAUQ";
-	var zipcodes = process.argv.slice(2); // capture all zipcodes as an array
-	var geocodeUrl = "https://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:" + zipcodes[0] + "&key="+googleApiKey;
+	var geocodeUrl = "https://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:" + zipcode + "&key="+googleApiKey;
 
 	https.get(geocodeUrl, function(geoResponse) {
 		var geoData = "";
@@ -51,4 +50,14 @@ function printError(error, msg) {
 
 		geoResponse.on("error", printError);
 	});
+}
+
+
+(function() {
+	var zipcodes = process.argv.slice(2);
+	if (zipcodes.length > 0) {
+		zipcodes.forEach(forecast);
+	} else {
+		printError({message: "Insufficient data: zipcode or postal code missing."});
+	}
 })();
