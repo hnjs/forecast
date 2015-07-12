@@ -7,6 +7,8 @@ The weather details are fetched from forecast.io via its APIs
 
 1. If node.js is not installed on your machine, visit https://nodejs.org/download and follow the instruction to install
 
-2. Open terminal or command prompt and run
+2. Open terminal or command prompt and run:
+
 	Syntax:	node forecast.js zipcode1 [zipcode2 [zipcode3 ...]]
+
 	Sample: node forecast.js 90210 01701 01803 24442
