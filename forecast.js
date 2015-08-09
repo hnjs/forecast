@@ -6,7 +6,7 @@ function printError(error) {
 
 function forecast(zipcode) {
 	var https = require("https");
-	var googleApiKey = "AIzaSyCnUPwiA1UP0Fkpyhxx35R98SFBLttjAUQ";
+	var googleApiKey = "xxxxxxxxx";
 	var geocodeUrl = "https://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:" + zipcode + "&key="+googleApiKey;
 
 	https.get(geocodeUrl, function(geoResponse) {
@@ -24,7 +24,7 @@ function forecast(zipcode) {
 				var result = geoData.results[0],
 					latitude = result.geometry.location.lat,
 					longitude = result.geometry.location.lng,
-					forecastApiKey = "0769bb85eabe49280f54916b58a2cc74", // forecast.io api key
+					forecastApiKey = "xxxxxxxxx", // forecast.io api key
 					forecastUrl = "https://api.forecast.io/forecast/"+ forecastApiKey + "/" + latitude+","+ longitude;
 
 				locationAddr = result.formatted_address;
